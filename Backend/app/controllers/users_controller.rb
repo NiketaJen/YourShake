@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
     def index
         users = User.all 
-        render json: users, :include => [:cart, :cart_items]
+        render json: users
     end
 
     def new
@@ -17,7 +17,7 @@ class UsersController < ApplicationController
         if user.valid?
             user.save
             cart = Cart.create(user_id: user.id)
-            render json: users, :include => [:cart, :cart_items]
+            render json: user
         else
             render json: {
                 message: user.errors.messages
