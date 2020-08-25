@@ -9,4 +9,5 @@ class ItemSerializer < ActiveModel::Serializer
   has_many :allergens, through: :allergen_items
   has_many :flavor_items
   has_many :flavors, through: :flavor_items
+  
 end
