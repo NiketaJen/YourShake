@@ -10,16 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_25_150500) do
+ActiveRecord::Schema.define(version: 2020_08_28_140214) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "allergen_items", force: :cascade do |t|
-    t.integer "allergen_id"
-    t.integer "item_id"
+    t.bigint "allergen_id"
+    t.bigint "item_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["allergen_id"], name: "index_allergen_items_on_allergen_id"
+    t.index ["item_id"], name: "index_allergen_items_on_item_id"
   end
 
   create_table "allergens", force: :cascade do |t|
@@ -29,18 +31,21 @@ ActiveRecord::Schema.define(version: 2020_08_25_150500) do
   end
 
   create_table "cart_items", force: :cascade do |t|
-    t.integer "cart_id"
-    t.integer "item_id"
+    t.bigint "cart_id"
+    t.bigint "item_id"
     t.integer "quantity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["cart_id"], name: "index_cart_items_on_cart_id"
+    t.index ["item_id"], name: "index_cart_items_on_item_id"
   end
 
   create_table "carts", force: :cascade do |t|
     t.float "total"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -49,11 +54,22 @@ ActiveRecord::Schema.define(version: 2020_08_25_150500) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "flavor_items", force: :cascade do |t|
-    t.integer "flavor_id"
-    t.integer "item_id"
+  create_table "category_items", force: :cascade do |t|
+    t.bigint "category_id"
+    t.bigint "item_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_category_items_on_category_id"
+    t.index ["item_id"], name: "index_category_items_on_item_id"
+  end
+
+  create_table "flavor_items", force: :cascade do |t|
+    t.bigint "flavor_id"
+    t.bigint "item_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["flavor_id"], name: "index_flavor_items_on_flavor_id"
+    t.index ["item_id"], name: "index_flavor_items_on_item_id"
   end
 
   create_table "flavors", force: :cascade do |t|
@@ -67,10 +83,19 @@ ActiveRecord::Schema.define(version: 2020_08_25_150500) do
     t.float "price"
     t.text "description"
     t.string "image"
-    t.integer "size_id"
-    t.integer "category_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "companyname"
+    t.string "directions"
+  end
+
+  create_table "size_items", force: :cascade do |t|
+    t.bigint "size_id"
+    t.bigint "item_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["item_id"], name: "index_size_items_on_item_id"
+    t.index ["size_id"], name: "index_size_items_on_size_id"
   end
 
   create_table "sizes", force: :cascade do |t|

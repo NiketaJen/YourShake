@@ -1,8 +1,10 @@
 class ItemSerializer < ActiveModel::Serializer
-  attributes :id, :name, :price, :description, :image, :size_id, :category_id
+  attributes :id, :companyname, :name, :price, :description, :image, :directions
 
-  has_many :sizes
-  has_many :categories
+  has_many :size_items
+  has_many :sizes, through: :size_items
+  has_many :category_items
+  has_many :categories, through: :category_items
   has_many :cart_items
   has_many :carts, through: :cart_items
   has_many :allergen_items
