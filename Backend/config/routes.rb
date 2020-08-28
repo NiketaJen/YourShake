@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :category_items
+  resources :size_items
   resources :sizes
   resources :categories
   resources :allergens

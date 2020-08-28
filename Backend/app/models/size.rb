@@ -1,3 +1,4 @@
 class Size < ApplicationRecord
-    belongs_to :item
+    has_many :size_items
+    has_many :items, through: :size_items
 end
