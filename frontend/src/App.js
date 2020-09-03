@@ -1,7 +1,5 @@
 import React, {useEffect} from 'react';
 import NavBar from "./app/NavBar"
-
-
 import './App.css';
 
 
@@ -12,7 +10,9 @@ function App() {
       <NavBar/>
      <br>
      </br>
-     Hello World
+     <br>
+     </br>
+     Hello Home Page
     </div>
   );
 }

@@ -1,9 +1,7 @@
-// import React from "react";
 import React, {useEffect} from 'react';
-import SingleItem from "./SingleItem"
-// import ItemCard from "./ItemCard"
+import ItemCard from "./ItemCard"
 import {useDispatch, useSelector} from 'react-redux'
-import { Link } from 'react-router-dom'
+
 
 const itemLink = "http://localhost:3000/items"
 
@@ -27,17 +25,17 @@ function ItemCollection(){
   //     // <Link to={`/items/${item.id}`}></Link>
   //   }
 
-    const renderedItems = allItems.map(item => (
-      <div className="ItemList" key={item.id} item={item}>
-        <img src={item.image}  />
-        <p>{item.companyname}</p>
-       <p> {item.name} </p>
-      </div>
-    ))
-
     // const renderedItems = allItems.map(item => (
-    //   <ItemCard key={item.id} item={item}/>
+    //   <div className="ItemList" key={item.id} item={item}>
+    //     <img src={item.image}  />
+    //     <p>{item.companyname}</p>
+    //    <p> {item.name} </p>
+    //   </div>
     // ))
+
+    const renderedItems = allItems.map(item => (
+      <ItemCard key={item.id} item={item}/>
+    ))
 
     
 

@@ -1,6 +1,7 @@
 
 const initialState = {
-    items: []
+    items: [],
+    cartItems: []
 }
 
 function ItemsReducer(state = initialState, action) {
@@ -14,7 +15,9 @@ function ItemsReducer(state = initialState, action) {
         }
         default:
             return state
-  }
+    }
+     
+
     
 
 

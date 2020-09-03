@@ -1,10 +1,10 @@
 import {combineReducers} from "redux"
 import ItemsReducer from "./ItemsReducer"
-import UserReducer from "./UserReducer"
+import CartReducer from "./CartReducer"
 
 const MainReducer = combineReducers({
     itemsState: ItemsReducer,
-    // userState: UserReducer
+    cartState: CartReducer
 
 })
 
