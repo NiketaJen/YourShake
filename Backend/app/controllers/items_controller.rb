@@ -4,8 +4,8 @@ class ItemsController < ApplicationController
         render json: items
     end
 
-    def show
-        item = Item.find_by(id: params[:id]) 
+    def singleItem
+        item = Item.find(params[:id]) 
         render json: item
     end
 end

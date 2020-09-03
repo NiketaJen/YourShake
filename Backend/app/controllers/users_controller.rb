@@ -6,16 +6,13 @@ class UsersController < ApplicationController
         render json: users
     end
 
-    def new
-        user = User.new
-       
-    end
 
     def create
         user = User.new(user_params)
 
         if user.valid?
             user.save
+            # byebug
             cart = Cart.create(user_id: user.id)
             render json: user
         else
