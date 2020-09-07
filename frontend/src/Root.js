@@ -1,6 +1,6 @@
 import React,{useState, useEffect} from "react"
 import {useHistory} from "react-router"
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import App from './App'
 import ItemCollection from "./features/items/ItemCollection"
 import SingleItem from "./features/items/SingleItem"
@@ -34,24 +34,26 @@ const Root = () => {
     .then(user => {
       if(user.username){
         setUser(user)
-      } else{
+      } 
+      else{
         history.push('/')
       }
     })
   }, [history])
 
     return(
-      <Router>
-      <Route path="/cart" component={CartCollection} />
-      <Route path="/account/editaccount/:id" component={()=> <EditAccount currentUser ={currentUser}/>} />
-      <Route path="/account/useraccount" component={()=> <UserAccount currentUser ={currentUser} logout ={logout}/>} />
-      <Route path="/account/signup" component={Signup} />
-      {/* <Route path="/account/register" component={Register} /> */}
-      <Route path="/account/login" component={()=> <Login setUser={setUser} currentUser = {currentUser}/>} />
+      <Switch>
+      <Route exact path="/" component={App} />
+      <Route exact path="/cart" component={CartCollection} />
+      <Route exact path="/Products" component={ItemCollection} />
       <Route exact path="/items/:id" component={SingleItem} />
-      <Route path="/Products" component={ItemCollection} />
-      <Route path="/" exact component={App} />
-    </Router>
+      <Route exact path="/account/signup" component={Signup} />
+      <Route exact path="/account/login" component={()=> <Login setUser={setUser} currentUser = {currentUser}/>} />
+      <Route exact path="/account/editaccount/:id" component={()=> <EditAccount currentUser ={currentUser}/>} />
+      <Route exact path="/account/useraccount" component={()=> <UserAccount currentUser ={currentUser} logout ={logout}/>} />
+      {/* <Route path="/account/register" component={Register} /> */}
+      
+    </Switch>
     )
    
     

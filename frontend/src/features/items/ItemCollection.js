@@ -3,6 +3,7 @@ import ItemCard from "./ItemCard"
 import {useDispatch, useSelector} from 'react-redux'
 
 
+
 const itemLink = "http://localhost:3000/items"
 
 function ItemCollection(){
@@ -20,10 +21,7 @@ function ItemCollection(){
       })
     },[])
 
-  //  function handleClick() {
-  //     console.log("click click")
-  //     // <Link to={`/items/${item.id}`}></Link>
-  //   }
+ 
 
     // const renderedItems = allItems.map(item => (
     //   <div className="ItemList" key={item.id} item={item}>
@@ -40,10 +38,21 @@ function ItemCollection(){
     
 
     return(
-        <section >
-          <h2> All Products</h2>
+        <div className="grid-container" >
+          <div className="content">
+           <header>
+            {/* <NavBar/>  */}
+           </header>
+          
+            <div className="main">
+            <h2> All Products</h2>
             {renderedItems}
-        </section>
+
+            </div>
+
+          </div>
+        
+        </div>
         
     )
 

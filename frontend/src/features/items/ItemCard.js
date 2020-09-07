@@ -12,12 +12,16 @@ function ItemCard(props){
     // onClick={handleClick()}
     return(
         <div >
-            <h2>Item Card</h2>
-                 <div className="ItemList" >
-                <img src={item.image} alt="product image" />
-                <p>{item.companyname}</p>
-                 <p><Link to={`/items/${item.id}`} >{item.name}</Link></p>
-              </div>
+            <ul className="products">
+                <li key={item.id}>
+                    <div className="product" >
+                    <img src={item.image} alt={item.name} />
+                    <p>{item.companyname}</p>
+                    <p><Link to={`/items/${item.id}`} >{item.name}</Link></p>
+                    </div>
+                </li>
+            </ul>
+               
         </div>
    
     )

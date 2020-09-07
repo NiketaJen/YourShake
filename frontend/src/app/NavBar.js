@@ -14,7 +14,13 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   title: {
-    marginRight: theme.spacing(2),
+    marginLeft: theme.spacing(1),
+  },
+  signinButton: {
+    marginLeft: theme.spacing(5),
+  },
+  cartButton: {
+    marginLeft: theme.spacing(5),
   },
   navLinks: {
     flexGrow: 1,
@@ -42,12 +48,16 @@ export default function Navbar() {
       </Typography>
       
       <div className="navLinks">
-       <Link to="/Products">Products</Link>
+       <Link to="/Products" className="navLink">Products</Link>
       </div>
       <IconButton edge="start" className={classes.signinButton} color="inherit" aria-label="user">
        <PersonOutlineRoundedIcon/>
      </IconButton>
       <Button color="inherit" onClick={() => loggedIn()} >Signin</Button>
+      <div className="accountLink">
+        <Link to="/account/useraccount" className="navLink">View Account</Link>
+      </div>
+      
       <IconButton edge="start" className={classes.cartButton} color="inherit" aria-label="cart">
        <ShoppingCartOutlinedIcon onClick={() => viewCart()}/>
      </IconButton>

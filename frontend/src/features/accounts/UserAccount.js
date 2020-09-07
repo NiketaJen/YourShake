@@ -41,6 +41,13 @@ function UserAccount(props) {
             type="register"
             className="button-block"
              onClick={() => goHome()}>Home</Button>
+             <br></br>
+              <Button
+            variant="contained"
+            color="primary"
+            type="register"
+            className="button-block"
+             onClick={() => props.logout()}>Sign Out</Button>
         </div>
     )
 

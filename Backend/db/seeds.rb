@@ -15,11 +15,14 @@ Category.destroy_all
 CategoryItem.destroy_all
 Size.destroy_all
 SizeItem.destroy_all
+CartItem.destroy_all
 
 
-User.create(first_name: "Shane", last_name: "Jenerette", username: "superman", email:"shane@hotmail.com", password: "1234")
+u1=User.create(first_name: "Shane", last_name: "Jenerette", username: "superman", email:"shane@hotmail.com", password: "1234")
 
- Item.create(companyname: "BodyTech Elite", name:"Hydrolyzed Whey Protein Isolate", price: 37.99, description: "Concentrated, easily-digestible Hydrolyzed Whey Protein Isolate from the BodyTech® Elite brand is carefully crafted to aid advanced athletes in faster fitness recovery. The elevated whey protein content is rapidly absorbed by the body, supporting elite competitors with a higher demand for recovery. Hydrolyzed Whey Protein is ideal for pre-or post-workout and can be seamlessly blended into smoothies, shakes or combined with other power foods.
+
+
+i1 = Item.create(companyname: "BodyTech Elite", name:"Hydrolyzed Whey Protein Isolate", price: 37.99, description: "Concentrated, easily-digestible Hydrolyzed Whey Protein Isolate from the BodyTech® Elite brand is carefully crafted to aid advanced athletes in faster fitness recovery. The elevated whey protein content is rapidly absorbed by the body, supporting elite competitors with a higher demand for recovery. Hydrolyzed Whey Protein is ideal for pre-or post-workout and can be seamlessly blended into smoothies, shakes or combined with other power foods.
 
 The rapid response formula prompts muscle tissue repair, and compared to the brand's standard whey protein, offers:
 
@@ -28,7 +31,7 @@ Less total fat and saturated fat
 Less cholesterol
 Reduced lactose
 Fewer carbohydrates", image: "https://s7.vitaminshoppe.com/is/image/VitaminShoppe/2181451_01?$OP_PDPSKU$", directions: "Add One (1) Scoop (38G) Of Hydrolyzed Powder To One (1) Cup (8 Oz) Cold Water, Juice Or Your Favorite Beverage. Stir Or Shake Until Smooth.")
- Item.create(companyname: "Women's Best", name:"Fit 100% Premium Whey Protein", price: 39.99 , description: "Women's Best Fit Pro Whey is a 100% premium Whey Protein blend with a proportion of 60% Whey Isolate and 35% Whey Concentrate. This blend will support and contribute to optimal muscle growth and maintenance.
+i2 = Item.create(companyname: "Women's Best", name:"Fit 100% Premium Whey Protein", price: 39.99 , description: "Women's Best Fit Pro Whey is a 100% premium Whey Protein blend with a proportion of 60% Whey Isolate and 35% Whey Concentrate. This blend will support and contribute to optimal muscle growth and maintenance.
 
 Women's Best Fit Pro Whey is for people who have a higher demand of protein because of their active lifestyle and are looking for a fast digestible and tasty protein blend, or those who simply want to live a healthier lifestyle and are looking for tasty shakes without sugar.
 
@@ -517,3 +520,8 @@ size_items = [
     {size_id:3, item_id:24},
 ]
 size_items.each {|size_item| SizeItem.create(size_item)}
+
+c1 = Cart.create(total:0, user_id: u1.id)
+
+CartItem.create(item_id: i1.id, cart_id: c1.id)
+CartItem.create(item_id: i2.id, cart_id: c1.id)

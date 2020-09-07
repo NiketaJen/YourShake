@@ -1,23 +1,30 @@
 class UsersController < ApplicationController
-    before_action :find_user, only: [:show, :edit, :update, :destroy]
+    before_action :find_user, only: [ :edit, :update, :destroy]
 
     def index
         users = User.all 
         render json: users
     end
 
+    def show
+        @current_user = User.find(params[:id])
+        render json: @current_user
+    end
+
 
     def create
-        user = User.new(user_params)
+        user = User.create(user_params)
 
         if user.valid?
-            user.save
+            # user.save
             # byebug
+            current_user = user
+            session[:user_id] = user.id
             cart = Cart.create(user_id: user.id)
-            render json: user
+            render json: {success: true, id: user.id}
         else
             render json: {
-                message: user.errors.messages
+                success: false
             }
         end
     end
