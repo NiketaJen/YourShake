@@ -2,8 +2,17 @@
   text-align: center;
 }
 
-.navLinks {
-  text-align: right;
+.navLink {
+  color: white;
+  text-decoration: none;
+  /* padding-left:100%; */
+}
+
+.accountLink {
+  color: white;
+  text-decoration: none;
+  justify-content: right;
+  /* padding-left:5px; */
 }
 
 .companyName {

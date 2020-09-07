@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
     end
 
     def singleItem
-        item = Item.find(params[:id]) 
+        item = Item.find_by(id: params[:id]) 
         render json: item
     end
 end
